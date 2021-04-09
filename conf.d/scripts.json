@@ -1,0 +1,8 @@
+{
+    "scripts": [
+        "getCPUInfo.py",
+        "getMemInfo.py",
+        "sizeDisk.py",
+        "systemInfo.py"
+    ]
+}
