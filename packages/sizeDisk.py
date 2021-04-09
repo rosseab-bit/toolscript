@@ -28,8 +28,4 @@ def sizeDisk():
         print (f"   Used: {get_size(partition_usage.used)}")
         print (f"   Free: {get_size(partition_usage.free)}")
         print (f"   Percentage: {get_size(partition_usage.percent)}")
-    disk_io = psutil.disk_io_counters()
-    print (disk_io)
-    #print (f"Total read: {get_size(disk_io.read_bytes)}")
-    #print (f"Total write: {get_size(disk_io.write_bytes)}")
 sizeDisk()
