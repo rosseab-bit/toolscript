@@ -34,10 +34,24 @@ for script in json.loads(open(db_scripts).read())["scripts"]:
     n = n+1
 option = input('Desea ejecutar todos los scripts? yes/no ')
 if option == "yes":
-    print ('se ejecutaran todos los script')
+    print ('Se ejecutaran los siguiente scripts')
+    n = 0
     for script in json.loads(open(db_scripts).read())["scripts"]:
-        execute = f'python3 packages/{script}' 
-        print (execute)
+        print (str(n)+' : '+f"{script}")
+        n = n+1
+    option = input('Desea continuar: yes/no \n')
+    if option == "yes":
+        for script in json.loads(open(db_scripts).read())["scripts"]:
+            execute = f'python3 packages/{script} 2>>tmp/{script}.err 1>>tmp/{script}.out' 
+            print (execute)
+    elif option == "no":
+        print ('Se cancela la ejecucion de los siguientes scripts:\n')
+        n = 0
+        for script in json.loads(open(db_scripts).read())["scripts"]:
+            print (str(n)+' : '+f"{script}")
+            n = n+1
+    else:
+        print ('La opcion ingresada no se encuentra disponible.')
 elif option == "no":
     number_script = input('ingrese el numbero de los scrips a ejecutar separado por una coma ej: 0,1,4 \n')
     scripts_execute = number_script.split(',')
@@ -58,4 +72,4 @@ elif option == "no":
             print(list_scripts_loads[int(script)])
         print ('-'*20)
 else:
-    print ('no se ingreso ninguna opcion')
+    print ('La opcion ingresada no esta disponible.')
