@@ -2,6 +2,7 @@
     "scripts": [
         "getCPUInfo.py",
         "getMemInfo.py",
+        "listFolder.sh",
         "sizeDisk.py",
         "systemInfo.py"
     ]

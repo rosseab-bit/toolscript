@@ -29,9 +29,18 @@ dump_list.close()
 print (load_dbScripts)
 list_scripts_loads = json.loads(open(db_scripts).read())["scripts"]
 n = 0
+print ('Python scripts')
 for script in json.loads(open(db_scripts).read())["scripts"]:
-    print (str(n)+': '+script)
+    if ".py" in script:
+        print (str(n)+': '+script)
     n = n+1
+n = 0
+print ('Bash scripts')
+for script in json.loads(open(db_scripts).read())["scripts"]:
+    if ".sh" in script:
+        print (str(n)+': '+script)
+    n = n+1
+
 option = input('Desea ejecutar todos los scripts? yes/no ')
 if option == "yes":
     print ('Se ejecutaran los siguiente scripts')
@@ -58,12 +67,22 @@ elif option == "no":
     print ('se ejecutaran los siguientes scripts:')
     print ('-'*20)
     for script in scripts_execute:
-        print (list_scripts_loads[int(script)])
+        if ".py" in list_scripts_loads[int(script)]:
+            print ('python3 packages/'+list_scripts_loads[int(script)])
+        if ".sh" in list_scripts_loads[int(script)]:
+            print ('/bin/bash packages/'+list_scripts_loads[int(script)])
     print ('-'*20)
     option = input('Confirma la ejecucion de los scipts? yes/no: \n')
     if option == 'yes':
         print ('Ejecutando scripts')
         time.sleep(1)
+        for script in scripts_execute:
+            if ".py" in list_scripts_loads[int(script)]:
+                print ('python3 packages/'+list_scripts_loads[int(script)])
+            if ".sh" in list_scripts_loads[int(script)]:
+                execute = '/bin/bash packages/%s'%list_scripts_loads[int(script)]
+                print ('/bin/bash packages/'+list_scripts_loads[int(script)])
+                os.system(execute)
         print ('Finaliza la ejecucion')
     elif option == 'no':
         print ('Se cancela la ejecucion de los scripts')
