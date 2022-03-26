@@ -9,7 +9,7 @@ Script para centralizar scripts y ejecutar desde un solo lugar.
 2. Pude ejecutar scripts de auno elijiendo desde la lista del menu que podra tener de los scripts que se carguen.
 
 ## Contacto
-<p align="center"><img src="img_demo.png" /></p>
+<p align="center"><img src="img_demo1.png" /></p>
 
 
 ## Contacto
